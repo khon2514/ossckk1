@@ -1,0 +1,910 @@
+<html>
+
+    <head>
+
+        <meta charset="utf-8">
+        <title>ระบบส่งยาทางไปรษณีย์ รพ.สิริรธร จ.ขอนแก่น</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+
+
+        <script src="https://kit.fontawesome.com/ad42651166.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+            integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href='https://fonts.googleapis.com/css?family=Sarabun' rel='stylesheet' type='text/css'>
+
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+            integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+            crossorigin="anonymous" />
+
+
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <style type='text/css'>
+            h5 {
+                text-align: left;
+            }
+
+            .header img {
+                float: left;
+                width: 100px;
+                height: 100px;
+                background: #555;
+            }
+
+            .block {
+                display: block;
+                width: 100%;
+                border: none;
+                background-color: #2E86C1;
+                color: white;
+                padding: 14px 28px;
+                font-size: 16px;
+                cursor: pointer;
+                text-align: center;
+            }
+
+            .block:hover {
+                background-color: #ddd;
+                color: black;
+            }
+
+            #ch {
+                width: 150px;
+                float: right;
+            }
+
+            td.khon input[type=number] {
+                padding: 10px;
+                font-size: 17px;
+                border: 1px solid grey;
+                float: left;
+                width: 80%;
+                background: #f1f1f1;
+            }
+
+            td.khon button {
+                float: left;
+                width: 20%;
+                padding: 10px;
+                background: #2196F3;
+                color: white;
+                font-size: 15px;
+                border: 1px solid grey;
+                border-left: none;
+                cursor: pointer;
+            }
+
+            img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                border-radius: 100%;
+            }
+
+            td.kh input[type=text]:empty {
+                background-color: red;
+            }
+        </style>
+
+        <script type="text/javascript">
+
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "firebase/app";
+            import { getAnalytics } from "firebase/analytics";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+                apiKey: "AIzaSyAaQXgpQtaW54wIDtpsBmGS21YmmZFvXPM",
+                authDomain: "ossc-kk-452db.firebaseapp.com",
+                projectId: "ossc-kk-452db",
+                storageBucket: "ossc-kk-452db.appspot.com",
+                messagingSenderId: "593695276980",
+                appId: "1:593695276980:web:b53f553338c4450e86bce1",
+                measurementId: "G-2MCX63DG2Y"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+
+            function check_input_isnull() {
+
+                // Swal.fire({
+                //         position: 'center',
+                //         icon: 'error',
+                //         title: 'Hello',
+                //         timer: 3000
+
+                //     })
+
+                var useridq = document.getElementById("userId").value
+                var ptnameq = document.getElementById("name").value
+                var idcardq = document.getElementById("idcard").value
+                var addrq = document.getElementById("addr").value
+
+                if (useridq.length == 0 || ptnameq.length == 0 || idcardq.length == 0 || addrq.length == 0) {
+
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'กรอกข้อมูลไม่สมบูรณ์',
+                        timer: 3000
+
+                    })
+
+                    if (ptnameq.length == 0) {
+                        $(ptnameq).css("border", "2px solid red");
+                    }
+                } else {
+
+                    // checkcid()
+                    checkvisit()
+                    // checkvisit()
+
+                }
+            }
+
+
+
+
+            function savedatatosheet() {
+
+
+
+                var userdata = new XMLHttpRequest();
+                const scriptURL =
+                    'https://script.google.com/macros/s/AKfycbwkOf3KDbhZY7Z5lLWWL8H3X1iQ0FxEkgO9YWvZdmnVxdjg3jlsGKWIOPCC9pxBEs03uQ/exec'
+                // 'https://script.google.com/macros/s/AKfycbxTC0xOIPrrD3q9FTxzKZLZBYIbNH0zal06kDhUlAFc2AhkrFKZ8m02kM7T6x4nfqDlWw/exec'
+                // 'https://script.google.com/macros/s/AKfycbz0vT9ZbXzKnfUM-0E_R4UiLK8KmPlwQPYoLQ3N7UK133KPkp_gHDMhQR0NDbXOMnyD/exec'
+                var addrs = document.getElementById("addr").value +
+                    ' ต. ' + document.getElementById("tambon").value +
+                    ' อ. ' + document.getElementById("amphur").value +
+                    ' จ. ' + document.getElementById("changwat").value;
+                var formpatient = new FormData();
+                formpatient.append('action', 'appenddatax');
+                formpatient.append('userid', document.getElementById("userId").value);
+                formpatient.append('name', document.getElementById("name").value);
+                formpatient.append('phone', document.getElementById("phone").value);
+                formpatient.append('idcard', document.getElementById("idcard").value);
+                formpatient.append('cc', document.getElementById("cc").value);
+                formpatient.append('hn', document.getElementById("hn").value);
+                formpatient.append('addr', addrs);
+                formpatient.append('zipcode', document.getElementById("zipcode").value);
+
+                userdata.open("POST", scriptURL);
+                userdata.onreadystatechange = function () {
+                }
+                userdata.send(formpatient);
+            }
+
+            function setphone() {
+
+
+
+            }
+            const sleep = async (milliseconds) => {
+                await new Promise(resolve => {
+                    return setTimeout(resolve, milliseconds)
+                });
+            };
+
+            function checkcid() {
+
+                var idcard = document.getElementById("idcard").value
+                var userdata = new XMLHttpRequest();
+                var chl = 1
+
+                userdata.open("GET", "https://rx.sirinthornhospital.go.th/hms/checkcid.php?cid=" + idcard);
+                // x.setrequestheader("Content-Type", "application/x-www-form-urlencoded");
+                userdata.onreadystatechange = function () {
+                    var chkstat = JSON.parse(userdata.responseText)
+                    chkstat.slice(0, -1);
+                    if (chkstat[0].cid == 'xxxxx') {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: 'เลขบัตรประชาชน 13 หลักไม่ถูต้อง หรือผู้ป่วยยังไม่เคยรักษาที่ รพ.สิรินธร จ.ขอนแก่น'
+
+                        });
+
+                        return 0
+
+                    } else {
+                        if (chl == 1) {
+
+                            // Swal.fire({
+                            //     position: 'center',
+                            //     icon: 'error',
+                            //     title: 'Hello',
+                            //     timer: 3000
+
+                            // })
+
+                            checkvisit()
+                        }
+
+                        chl = chl + 1
+
+                    }
+                    // Swal.fire('Any fool can use a computer')
+
+
+
+                }
+                // sleep(5000);
+                userdata.send();
+
+            }
+
+            // function checkvisit() {
+
+            //     var idcard = document.getElementById("idcard").value
+            //     var userdata = new XMLHttpRequest();
+            //     var chl = 1
+
+            //     userdata.open("GET", "https://rx.sirinthornhospital.go.th/hms/checkvisit.php?cid=" + idcard);
+            //     // x.setrequestheader("Content-Type", "application/x-www-form-urlencoded");
+            //     userdata.onreadystatechange = function () {
+            //         var chkstat = JSON.parse(userdata.responseText)
+            //         if (chkstat[0].cid == 'xxxxx') {
+            //             if (chl == 1) {
+            //                 updatedata();
+            //                 savedatatosheet();
+            //                 closedwin();
+            //             }
+
+            //             chl = chl + 1
+            //         } else {
+            //             Swal.fire({
+            //                 position: 'center',
+            //                 icon: 'error',
+            //                 title: 'ท่านลงทะเบียนแล้ว ห้ามลงซ้ำซ้อน หากสงสัยหรือพบปัญหาการลงทะเบียนโปรดติดต่อเจ้าหน้าที่',
+            //                 timer: 3000
+
+            //             });
+            //             return 0
+
+            //         }
+            //         // Swal.fire('Any fool can use a computer')
+
+
+
+            //     }
+            //     // sleep(5000);
+            //     userdata.send();
+
+            // }
+
+            function checkvisit() {
+
+                var idcard = document.getElementById("idcard").value
+                var userdata = new XMLHttpRequest();
+                var chl = 1
+
+                userdata.open("GET", "https://rx.sirinthornhospital.go.th/hms/checkvisit.php?cid=" + idcard);
+                // x.setrequestheader("Content-Type", "application/x-www-form-urlencoded");
+                userdata.onreadystatechange = function () {
+                    var chkstat = JSON.parse(userdata.responseText)
+                    if (chkstat[0].cid == 'xxxxx') {
+                        if (chl == 1) {
+                            updatedata();
+                            savedatatosheet();
+                            closedwin();
+                        }
+
+                        chl = chl + 1
+                    } else {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: 'ท่านลงทะเบียนแล้ว ห้ามลงซ้ำซ้อน หากสงสัยหรือพบปัญหาการลงทะเบียนโปรดติดต่อเจ้าหน้าที่'
+
+                        });
+                        return 0
+
+                    }
+                    // Swal.fire('Any fool can use a computer')
+
+
+
+                }
+                // sleep(5000);
+                userdata.send();
+
+            }
+
+            function updatedata() {
+
+
+                var userdata = new XMLHttpRequest();
+                var formpatient = new FormData();
+                formpatient.append('userid', document.getElementById("userId").value);
+                formpatient.append('ptname', document.getElementById("name").value);
+                formpatient.append('phone', document.getElementById("phone").value);
+                formpatient.append('cid', document.getElementById("idcard").value);
+                formpatient.append('cc', document.getElementById("cc").value);
+                formpatient.append('addr', document.getElementById("addr").value);
+                formpatient.append('zipcode', document.getElementById("zipcode").value);
+                formpatient.append('hn', document.getElementById("hn").value);
+                formpatient.append('tambon', document.getElementById("tambon").value);
+                formpatient.append('amphur', document.getElementById("amphur").value);
+                formpatient.append('changwat', document.getElementById("changwat").value);
+                // formpatient.append('email', document.getElementById("email").innerHTML);
+                // formpatient.append('linename', document.getElementById("displayName").innerHTML);
+                userdata.open("POST", "https://rx.sirinthornhospital.go.th/hms/appenddata.php");
+                // x.setrequestheader("Content-Type", "application/x-www-form-urlencoded");
+                userdata.onreadystatechange = function () {
+                    // Swal.fire('Any fool can use a computer')
+
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'ลงทะเบียนสำเร็จ',
+                        timer: 3000
+                    });
+
+                }
+                // sleep(5000);
+                userdata.send(formpatient);
+
+            }
+
+
+            function getpatient(idcard) {
+                if (idcard != '') {
+                    var userdata = new XMLHttpRequest();
+                    userdata.open("GET", "https://rx.sirinthornhospital.go.th/hms/getpatient.php?cid=" + idcard);
+                    userdata.onreadystatechange = function () {
+                        var pateint = JSON.parse(userdata.responseText)
+                        if (pateint[0].cid === 'xxxxx') {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'error',
+                                title: 'ไม่พบข้อมูลที่ค้นหา',
+                                showConfirmButton: false
+                            });
+
+                            document.getElementById("idcard").value = document.getElementById("idcard_").value;
+                            // document.getElementById("name").value = document.getElementById("name_").value;
+                            // document.getElementById("addr").value = document.getElementById("addr_").value;
+                            // document.getElementById("phone").value = document.getElementById("phone_").value;
+                            // document.getElementById("zipcode").value = document.getElementById("zipcode_").value;
+                            // document.getElementById("cc").value = 'ขอรับยาต่อเนื่อง';                            
+
+                        } else {
+
+
+                            Swal.fire({
+                                // title: 'ข้อมูลผู้รับบริการ',
+                                html:
+
+
+                                    '<h4 style="background-color:#D6DBDF;">ข้อมูลผู้รับยา</h4>' +
+                                    '</div>' +
+                                    '<table class="w3-table">' +
+                                    '<tr>' +
+                                    '<td style="width:40%; ">' +
+                                    '<h5>ชื่อ-สกุล</h5>' +
+                                    '</td>' +
+                                    '<td style="width:100%"; text-align: left;>' +
+                                    '<h5>' + pateint[0].ptname + '</h5>' +
+                                    '</td>' +
+                                    '</tr> ' +
+
+                                    '<tr>' +
+                                    '<td style="width:40%; ">' +
+                                    '<h5>เบอร์โทร</h5>' +
+                                    '</td>' +
+                                    '<td style="width:100%" ; text-align: left;>' +
+                                    '<h5>' + pateint[0].hometel + '</h5>' +
+                                    '</td>' +
+                                    '</tr> ' +
+
+                                    '<tr>' +
+                                    '<td style="width:40%;">' +
+                                    '<h5>ที่อยู่</h5>' +
+                                    '</td>' +
+                                    '<td style="width:100%" ; text-align: left;>' +
+                                    '<h5>' + pateint[0].informaddr + '</h5>' +
+                                    '</td>' +
+                                    '</tr> ' +
+
+                                    '<tr>' +
+                                    '<td style="width:40%; ">' +
+                                    '<h5>รหัสไปรษณีย์</h5>' +
+                                    '</td>' +
+                                    '<td style="width:100%" ; text-align: left;>' +
+                                    '<h5>' + pateint[0].postcode + '</h5>' +
+                                    '</td>' +
+                                    '</tr> ' +
+                                    '</table>' +
+
+                                    '<h5 style="text-align: center;background-color:#DFFF00;">ต้องการแก้ไขข้อมูลผู้รับยาหรือไม่</h5>' +
+
+                                    '',
+
+                                // background: '#AED6F1',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                // DenyButtonColor: '#3085d6',
+                                // showCancelButton: true,
+                                confirmButtonText: 'ต้องการ',
+                                cancelButtonText: `ไม่ต้องการ`,
+                            }).then((result) => {
+                                /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+
+                                    document.getElementById("name").value = pateint[0].ptname
+                                    document.getElementById('phone').value = pateint[0].hometel
+                                    document.getElementById("zipcode").value = pateint[0].postcode
+                                    document.getElementById('addr').value = pateint[0].addr;
+                                    document.getElementById('hn').value = pateint[0].hn
+                                    document.getElementById("tambon").value = pateint[0].tambon;
+                                    document.getElementById("amphur").value = pateint[0].amphur;
+                                    document.getElementById("changwat").value = pateint[0].changwat;
+
+
+
+                                } else if (result.isDenied) {
+                                    // Swal.fire('Changes are not saved', '', 'info')
+                                    // find=0
+                                }
+                            })
+                        }
+
+
+
+
+                    }
+                    userdata.send();
+
+                }
+
+            }
+
+            function getuserid(userid) {
+                // var chl = 1
+                var userdata = new XMLHttpRequest();
+                userdata.open("GET", "https://rx.sirinthornhospital.go.th/hms/getuserid.php?userid=" + userid);
+                userdata.onreadystatechange = function () {
+                    var content = JSON.parse(userdata.responseText)
+
+                    document.getElementById("idcard").value = content[0].cid;
+                    document.getElementById("name").value = content[0].ptname;
+                    document.getElementById("addr").value = content[0].addr;
+                    document.getElementById("phone").value = content[0].phone;
+                    document.getElementById("zipcode").value = content[0].zipcode;
+                    document.getElementById("hn").value = content[0].hn;
+                    document.getElementById("cc").value = 'ขอรับยาต่อเนื่อง';
+                    document.getElementById("tambon").value = content[0].tambon;
+                    document.getElementById("amphur").value = content[0].amphur;
+                    document.getElementById("changwat").value = content[0].changwat;
+
+                    document.getElementById("idcard_").value = content[0].cid;
+                    document.getElementById("name_").value = content[0].ptname;
+                    document.getElementById("addr_").value = content[0].addr;
+                    document.getElementById("phone_").value = content[0].phone;
+                    document.getElementById("zipcode_").value = content[0].zipcode;
+                    document.getElementById("hn_").value = content[0].hn;
+                    document.getElementById("tambon_").value = content[0].tambon;
+                    document.getElementById("amphur_").value = content[0].amphur;
+                    document.getElementById("changwat_").value = content[0].changwat;
+                }
+                userdata.send();
+            }
+
+            function hidecontrol(controlx) {
+                document.getElementById(controlx).style.visibility = "hidden";
+
+
+            }
+
+            function showcontrol(controlx) {
+
+                document.getElementById(controlx).style.visibility = "visible";
+
+            }
+        </script>
+
+
+    </head>
+
+    <body onload="hidecontrol('progress')">
+
+
+
+
+        <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+        <script>
+            function createUniversalLink() {
+                const link1 = liff.permanentLink.createUrl()
+                document.getElementById("universalLink1").append(link1)
+
+                liff.permanentLink.setExtraQueryParam('param=9')
+                const link2 = liff.permanentLink.createUrl()
+                document.getElementById("universalLink2").append(link2)
+            }
+
+            async function shareMsg() {
+                await liff.shareTargetPicker([{
+                    type: "text",
+                    text: "This message was sent by ShareTargetPicker"
+                }])
+            }
+
+            function logOut() {
+                liff.logout()
+                window.location.reload()
+            }
+
+            async function closedwin() {
+                await sleep(2000)
+                liff.closeWindow()
+            }
+
+            async function scanCode() {
+                const result = await liff.scanCode()
+                document.getElementById("scanCode").append(result.value)
+            }
+
+            function openWindow() {
+                liff.openWindow({
+                    url: "https://line.me",
+                    external: true
+                })
+            }
+
+
+
+            async function getFriendship() {
+                const friend = await liff.getFriendship()
+                document.getElementById("friendship").append(friend.friendFlag)
+                if (!friend.friendFlag) {
+                    if (confirm("คุณยังไม่ได้เพิ่ม Bot เป็นเพื่อน จะเพิ่มเลยไหม?")) {
+                        window.location = "https://line.me/R/ti/p/@311pkbsk"
+                    }
+                }
+            }
+
+            async function sendSticker() {
+                if (liff.getContext().type !== "none") {
+                    await liff.sendMessages([{
+                        "type": "sticker",
+                        "stickerId": 1,
+                        "packageId": 1
+                    }])
+                    alert("Message sent")
+                }
+            }
+
+            async function getUserProfile() {
+
+
+
+                const profile = await liff.getProfile()
+                document.getElementById("pictureUrl").src = profile.pictureUrl
+                document.getElementById("userId").value = profile.userId
+                document.getElementById("statusMessage").append(profile.statusMessage)
+                document.getElementById("displayName").append(profile.displayName)
+                document.getElementById("displayNamex").value = profile.displayName
+                document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
+
+                // getuserid(profile.userId)
+
+
+                // document.getElementById("idToken").append(liff.getIDToken())
+            }
+
+
+            async function main() {
+                liff.ready.then(() => {
+                    //document.getElementById("isLoggedIn").append(liff.isLoggedIn())
+                    if (liff.isLoggedIn()) {
+                        //  getEnvironment()
+                        // gettel()
+                        getUserProfile()
+
+                        //  getContext()
+                        //  getFriendship()
+                        //  createUniversalLink()
+                    } else {
+                        liff.login()
+                    }
+                })
+                await liff.init({
+                    liffId: "1657677453-gJDn9arm"
+
+                },
+                    () => {
+                        document
+                            .getElementById("save")
+                            .addEventListener("click", function () {
+                                // sendSticker()
+                                // if (
+                                // check_input_isnull()
+                                // === true) {
+                                // if (
+                                //   var chk =  
+                                // checkvisit()
+                                // if (chk == 1) {
+                                // updatedata();
+                                // savedatatosheet();
+                                // closedwin();
+
+                                // }
+
+                                // } else {
+                                //     Swal.fire('ข้อมูลต่อไปนี้ห้ามว่าง "ชื่อผู้รับยา" , "รหัสบัตรประชาชน", "ที่อยู่ผู้รับยา", "Line UserID"')
+                                //     // sleep(3000)
+                                // }
+                                // sleep(1000);
+                                // liff.closeWindow();
+                            }),
+                            document
+                                .getElementById("btn")
+                                .addEventListener("click", function () {
+                                    getpatient(document.getElementById("idcard").value)
+                                    // liff.closeWindow();
+                                });
+                    },
+
+                )
+
+                const urlParams = new URLSearchParams(window.location.search);
+                document.querySelector('#idcard').value = urlParams.get('idcard');
+            }
+            main()
+        </script>
+
+        <br>
+        <div class="container" style="background-color:#EAECEE;">
+
+            <input type="hidden" id="userId" name="userId">
+            <input type="hidden" id="displayNamex" name="displayNamex">
+            <input type="hidden" id="hn" name="hn">
+
+            <input type="hidden" id="idcard_" name="idcard_">
+            <input type="hidden" id="ptname_" name="ptname_">
+            <input type="hidden" id="addr_" name="addr_">
+            <input type="hidden" id="phone_" name="phone_">
+            <input type="hidden" id="zipcode_" name="zipcode_">
+            <input type="hidden" id="hn_" name="hn_">
+
+            <input type="hidden" id="tambon_" name="tambon_">
+            <input type="hidden" id="amphur_" name="amphur_">
+            <input type="hidden" id="changwat_" name="changwat_">
+
+
+
+
+            <h5 style="text-align: center;">แบบฟอร์มลงทะเบียนขอรับยาทางไปรษณีย์</h5>
+            <h6 style="text-align: center;">คลินิกโรคผิวหนัง รพ.สิรินธร จ.ขอนแก่น</h5>
+
+                <table class="table table-bordered">
+                    <tr>
+                        <td style="width:20%; background-color:#D1F2EB;">
+                            <img id="pictureUrl" class="rounded-circle" alt="" width="100%">
+                        </td>
+                        <td style="width:100%; background-color:#D1F2EB;">
+                            <h3>
+                                <div id="displayName"></div>
+                            </h3>
+                            <div id="statusMessage"></div>
+                            <div id="decodedIDToken"></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td style="width:20%">
+                            เลขบัตรประชาชน 13 หลัก ของผู้ป่วย
+                        </td>
+                        <td class="khon">
+
+                            <p style="color:red">(คลิกที่ปุ่มแว่นขยายเพื่อค้นหาข้อมูล)</p>
+                            <input type="number" style="font-size:20px;" class="form-control" id="idcard" name="idcard"
+                                required>
+                            <button id="btn"><i class="fa fa-search"></i></button>
+
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:20%">
+                            ชื่อ-สกุล ผู้รับยา
+                        </td>
+                        <td style="width:100%">
+
+                            <input type="text" style="font-size:20px;" class="form-control" id="name" name="name"
+                                required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:20%">
+                            เบอร์โทรศัพท์
+                        </td>
+                        <td style="width:100%">
+
+                            <input type="tel" style="font-size:20px;" class="form-control" id="phone" name="phone">
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td style="width:20%">
+                            ที่อยู่ (บ้านเลขที่/หมู่/ซอย/ถนน)
+                        </td>
+                        <td style="width:100%">
+                            <textarea id="addr" rows="4" cols="70" style="font-size:20px;"
+                                class="form-control mb-3"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:20%">
+                            จังหวัด
+                        </td>
+                        <td style="width:100%">
+                            <input type="text" style="font-size:20px;" class="form-control" id="changwat"
+                                name="changwat" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:20%">
+                            อำเภอ
+                        </td>
+                        <td style="width:100%">
+                            <input type="text" style="font-size:20px;" class="form-control" id="amphur" name="amphur"
+                                required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:20%">
+                            ตำบล
+                        </td>
+                        <td style="width:100%">
+                            <input type="text" style="font-size:20px;" class="form-control" id="tambon" name="tambon"
+                                required>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="width:20%">
+                            รหัสไปรษณีย์
+                        </td>
+                        <td style="width:100%">
+                            <input type="text" id="zipcode" name="zipcode" rows="4" cols="70" style="font-size:20px;"
+                                class="form-control mb-3">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="width:20%">
+                            เหตุผลการขอรับยา
+                        </td>
+                        <td style="width:100%">
+                            <p>ใส่เหตุผลสั้นๆ เช่น อาการสำคัญต่างๆ อาการแพ้ยา หรือหากต้องการเปลี่ยนจำนวนยา/วันนัด
+                                ให้แจ้งแพทย์ เพื่อการพิจารณาการสั่งใช้ยา</p>
+                            <textarea id="cc" rows="4" cols="70" style="font-size:20px;"
+                                class="form-control mb-3"></textarea>
+                        </td>
+                    </tr>
+
+                </table>
+                <button class="block" style="font-size:20px;" id="save">ประสงค์รับยาทางไปรษณีย์(คลิก)</button>
+
+
+
+
+        </div>
+        <br>
+
+        <div id="displaydata">
+
+        </div>
+
+        <p id="statusMessage"></p>
+        <p id="decodedIDToken"> </p>
+        <p id="isLoggedIn"></p>
+
+        <div class="progress" id="progress">
+            <div id="myProgressx" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+        </div>
+
+
+        <script>
+
+            const phoneInputField = document.querySelector("#phone");
+
+            const phoneInput = window.intlTelInput(phoneInputField, {
+                preferredCountries: ["th", "us", "uk", "lo", "km"],
+                initialCountry: "th",
+                geoIpLookup: getIp,
+                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+            });
+
+
+            if (document.getElementById('name').value === 'undefined') {
+                document.getElementById('name').value = ''
+            }
+            if (document.getElementById('addr').value === 'undefined') {
+                document.getElementById('addr').value = ''
+            }
+            if (document.getElementById('phone').value === 'undefined') {
+                document.getElementById('phone').value = ''
+            }
+            if (document.getElementById('zipcode').value === 'undefined') {
+                document.getElementById('zipcode').value = ''
+            }
+            if (document.getElementById('name_').value === 'undefined') {
+                document.getElementById('name_').value = ''
+            }
+            if (document.getElementById('addr_').value === 'undefined') {
+                document.getElementById('addr_').value = ''
+            }
+            if (document.getElementById('phone_').value === 'undefined') {
+                document.getElementById('phone_').value = ''
+            }
+            if (document.getElementById('zipcode_').value === 'undefined') {
+                document.getElementById('zipcode_').value = ''
+            }
+
+            var i = 0;
+            function move() {
+
+                if (document.getElementById("search").value == "") {
+                    hidecontrol('progress');
+                } else {
+                    showcontrol('progress');
+                }
+
+
+            }
+
+
+            function cleartext() {
+                document.getElementById("search").value = "";
+                document.getElementById("search").focus();
+
+            }
+
+            function getIp(callback) {
+
+                fetch('https://ipinfo.io/json?token=<your token>', { headers: { 'Accept': 'application/json' } })
+                    .then((resp) => resp.json())
+                    .catch(() => {
+                        return {
+                            country: 'th',
+                        };
+                    })
+                    .then((resp) => callback(resp.country));
+            }
+
+        </script>
+
+
+    </body>
+
+</html>
